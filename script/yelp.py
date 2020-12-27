@@ -4,7 +4,7 @@ from requests import get
 
 from datetime import datetime
 import pandas as pd
-
+from settings import token
 website = """
 #########################################
 #           WEBSITE: YELP.com          #
@@ -29,7 +29,7 @@ index = 0
 def get_total():
     url = 'https://api.yelp.com/v3/businesses/search?location=PHX&categories=Contractors&term=contractors&limit=50'
     headers = {
-        "Authorization": "Bearer 5YeGED7uounsmnVUz0_GctIoWs_f3vO2heUPuf9FIEOI51b002y9LyhPr-0dzWJY1WRUBJ9W04BO0aX1VEhoZV6L5ZtSU9EAwSu625a9uBgnCpV8sf4FSTWBcIXdX3Yx"}
+        "Authorization": "Bearer {token}".format(token=token)}
     response = get(url, headers=headers).json()
     print(response['total'])
     return response['total']
@@ -39,7 +39,7 @@ def make_request(index):
     url = 'https://api.yelp.com/v3/businesses/search?location=PHX&categories=Contractors&term=contractors&limit=50&offset={i}'.format(
         i=index)
     headers = {
-        "Authorization": "Bearer 5YeGED7uounsmnVUz0_GctIoWs_f3vO2heUPuf9FIEOI51b002y9LyhPr-0dzWJY1WRUBJ9W04BO0aX1VEhoZV6L5ZtSU9EAwSu625a9uBgnCpV8sf4FSTWBcIXdX3Yx"}
+        "Authorization": "Bearer {token}".format(token=token)}
     response = get(url, headers=headers)
     print(response.json())
     return response.json()
