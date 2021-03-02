@@ -5,17 +5,6 @@ from time import sleep
 import pandas as pd
 from random import randint
 
-website = """
-#########################################
-#           WEBSITE: INDEED.FR          #
-######################################### 
-"""
-print(website)
-start_time = datetime.now()
-print('Crawl starting time : {}'.format(start_time.time()))
-print()
-job_list = ["data+analyst", "data+scientist", "business+analyst"]
-
 application_links = []
 job_titles = []
 company_names = []
